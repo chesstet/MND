@@ -1,5 +1,9 @@
 import random as rn
 from pprint import pprint
+import time
+
+start_time = time.time()
+
 
 def generate_table(A):
     table = []
@@ -70,4 +74,9 @@ print("\n")
 
 answer = variant_assighment(table, X0_table, A)
 print(answer)
+
+
+print("час роботи: {}".format(time.time() - start_time))
+
+
 
