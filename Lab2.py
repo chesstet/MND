@@ -1,4 +1,5 @@
 import random as rn
+from math import sqrt
 from numpy import linalg as lg
 import pprint
 
@@ -12,8 +13,10 @@ def experiment(x1, x2, y):
 
 def kriteria(x1, x2, y):
     flag = 1
+    m = 5
+    Sigma0 = sqrt((2*(2*m - 2))/(m*(m-4)))
     while flag:
-        Sigma0 = 1.79
+
         exp1 = experiment(x1[0], x2[0], y)
         exp2 = experiment(x1[1], x2[0], y)
         exp3 = experiment(x1[0], x2[1], y)
@@ -24,9 +27,9 @@ def kriteria(x1, x2, y):
 
         F = [F1, F2, F3]
 
-        o1 = (3/5)*F1
-        o2 = (3/5)*F2
-        o3 = (3/5)*F3
+        o1 = ((m-2)/m)*F1
+        o2 = ((m-2)/m)*F2
+        o3 = ((m-2)/m)*F3
 
         O = [o1, o2, o3]
 
