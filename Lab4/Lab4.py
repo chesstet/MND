@@ -69,11 +69,11 @@ def experiment(x1, x2, x3, y, m = 3, N = 8):
             fisher = fisher_kriteria(table, student_checks, SB)
             fisher_check = fisher[0]
             Fp = fisher[1]
-            print('{} ітерація'.format(counter))
+            '''print('{} ітерація'.format(counter))
             print('Fp:')
             print(Fp)
             print(Gp*Sbeta*Fp)
-            print('\n')
+            print('\n')'''
             if fisher_check:
                 return table, b, check_b, student_b, student_checks, Fp
             else:
@@ -186,14 +186,22 @@ ymin = 200 + xcmin
 y = [ymin, ymax]
 print('ymin = {0}, ymax = {1}\n'.format(ymin, ymax))
 
+sb_counter = 0
+for i in range(100):
+    research = experiment(x1, x2, x3, y)
+    table = research[0]
+    koefs_b = research[1]
+    check_b = research[2]
+    koefs_sb = research[3]
+    for j in range(len(koefs_sb)):
+        if koefs_sb[j] != 0:
+            sb_counter += 1
+    check_sb = research[4]
+    Fp = research[5]
 
-research = experiment(x1, x2, x3, y)
-table = research[0]
-koefs_b = research[1]
-check_b = research[2]
-koefs_sb = research[3]
-check_sb = research[4]
-Fp = research[5]
+print("загальна кількість значимих коефіцієнтів:")
+print(sb_counter)
+print('\n')
 
 print('Таблиця експерименту')
 pprint.pprint(table)
