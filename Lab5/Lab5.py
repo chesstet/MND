@@ -72,6 +72,7 @@ def experiment(x1, x2, x3, y, m = 3, N = 15):
             SB = student[1]
             Sbeta = student[2]
             student_b = list(map(lambda x: x if b.index(x) in indexes else 0, b))
+
             student_checks = check(student_b, table)
 
             fisher = fisher_kriteria(table, student_checks, SB)
@@ -83,7 +84,7 @@ def experiment(x1, x2, x3, y, m = 3, N = 15):
             print(Gp*Sbeta*Fp)
             print('\n')
 
-            if fisher_check:
+            if fisher_check and len(indexes) <= len(b) - len(indexes):
                 return table, b, check_b, student_b, student_checks, Fp
             else:
                 flag = 1
